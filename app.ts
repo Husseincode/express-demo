@@ -2,6 +2,7 @@
 
 import express from 'express';
 import Logger from './logger';
+import STATUS_CODES from './enum';
 
 const app = express();
 const instance = new Logger();
@@ -13,11 +14,11 @@ let tempDb = [
 ];
 
 app.get('/', (req, res) => {
-  res.send('Hello world');
+  res.status(STATUS_CODES.SUCCESS).send('Hello world');
 });
 
 app.get('/api/courses', (req, res) => {
-  res.send(JSON.stringify(tempDb));
+  res.end(JSON.stringify(tempDb));
 });
 
 app.post('/addNewCourse/:id', (req, res) => {
@@ -27,16 +28,20 @@ app.post('/addNewCourse/:id', (req, res) => {
    * if course is available, return course already available
    * if not, add new course
    */
-  const filteredTempDb = tempDb.filter(({ id }) => id === paramsID);
-  if (filteredTempDb) {
-    return res.send('Course already in database');
+
+  // Check if course with the given ID already exists
+  const courseExists = tempDb.some(({ id }) => id === paramsID);
+  if (courseExists) {
+    return res
+      .status(STATUS_CODES.CONFLICT)
+      .send({ message: 'Course already in database' });
   }
   const newCourse = {
     id: paramsID,
     course: 'New Course Added',
   };
   tempDb.push(newCourse);
-  res.send('Success');
+  res.status(STATUS_CODES.SUCCESS).send({ message: 'New course added' });
 });
 
 app.get('/loggerSample', (req, res) => {
