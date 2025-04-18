@@ -1,7 +1,7 @@
 /** @format */
 
 import Joi from 'joi';
-import { ValidationSchema } from '../../enum';
+import { ValidationSchema } from '../enum/enum';
 
 class Validator {
   private courseSchema = Joi.object({

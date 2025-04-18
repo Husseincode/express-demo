@@ -1,7 +1,7 @@
 /** @format */
 
 import express from 'express';
-import CourseRoutes from './src/routes';
+import CourseRoutes from './routes';
 
 const app = express();
 

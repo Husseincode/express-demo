@@ -4,7 +4,7 @@ import { Request, Response } from 'express';
 import tempDb from '../database';
 import Validator, { ValidationSchema } from '../utils/validation';
 import { payloadProps } from '../types';
-import { STATUS_CODES } from '../../enum';
+import { STATUS_CODES } from '../enum/enum';
 import Logger from '../utils/logger';
 
 const instance = new Logger();

@@ -1,6 +1,6 @@
 /** @format */
 
-import { STATUS_CODES } from '../../enum';
+import { STATUS_CODES } from '../enum/enum';
 
 type StatusCode = (typeof STATUS_CODES)[keyof typeof STATUS_CODES];
 type payloadProps = {
