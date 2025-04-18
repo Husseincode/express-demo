@@ -11,5 +11,9 @@
   "description": "",
   "dependencies": {
     "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "joi": "^17.13.3",
+    "jshint": "^2.13.6"
   }
 }

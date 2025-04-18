@@ -1,6 +1,6 @@
 <!-- @format -->
 
-# express-demo
+# express-demo (TodoApp)
 
 # My Learning Journey on Backend Development using NodeJs, Typescipt and Express
 
