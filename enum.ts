@@ -12,4 +12,9 @@ enum STATUS_CODES {
   NOT_ACCEPTABLE = 406,
   NOT_SUPPORTED = 415,
 }
-export default STATUS_CODES;
+
+enum ValidationSchema {
+  CourseSchema = 'courseSchema',
+}
+
+export { STATUS_CODES, ValidationSchema };
