@@ -1,0 +1,11 @@
+{
+  "app": {
+    "name": "Express demo"
+  },
+  "server": {
+    "port": 2000
+  },
+  "db": {
+    "url": "mongodb://localhost/myapp"
+  }
+}

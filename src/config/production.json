@@ -1,0 +1,11 @@
+{
+  "app": {
+    "name": "Express demo - production"
+  },
+  "server": {
+    "port": 8080
+  },
+  "db": {
+    "url": "mongodb://prod-db-url"
+  }
+}

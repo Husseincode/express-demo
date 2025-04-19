@@ -7,7 +7,7 @@ type payloadProps = {
   message: string;
   status: StatusCode;
   data?: any;
-  details?: any;
+  details?: string[];
 };
 
 export { payloadProps, StatusCode };

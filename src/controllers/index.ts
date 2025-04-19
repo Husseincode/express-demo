@@ -12,7 +12,7 @@ const validatorInstance = new Validator();
 
 /** */
 export const getApp = (req: Request, res: Response) => {
-  res
+  return res
     .status(STATUS_CODES.SUCCESS)
     .send(
       'Hey, I am currently learning backend development using express and node'
@@ -25,7 +25,7 @@ export const getApp = (req: Request, res: Response) => {
  * @param res
  */
 export const getAllCourses = (req: Request, res: Response) => {
-  res.end(JSON.stringify(tempDb));
+  return res.end(JSON.stringify(tempDb));
 };
 
 export const addNewCourse = (req: Request, res: Response) => {
@@ -37,10 +37,12 @@ export const addNewCourse = (req: Request, res: Response) => {
   if (error) {
     const payload: payloadProps = {
       message: 'Validation failed',
-      details: error.details.map((detail) => detail.message),
+      details: error.details.map(
+        (detail: { message: string }) => detail.message
+      ),
       status: STATUS_CODES.BAD_REQUEST,
     };
-    res.status(STATUS_CODES.BAD_REQUEST).send(payload);
+    return res.status(STATUS_CODES.BAD_REQUEST).send(payload);
   }
   const newCourse = {
     id: tempDb.length + 1,
@@ -74,9 +76,11 @@ export const updateCourse = (req: Request, res: Response) => {
     ValidationSchema.CourseSchema
   );
   if (error) {
-    res.status(STATUS_CODES.BAD_REQUEST).send({
+    return res.status(STATUS_CODES.BAD_REQUEST).send({
       message: 'Validation failed',
-      details: error.details.map((detail) => detail.message),
+      details: error.details.map(
+        (detail: { message: string }) => detail.message
+      ),
     });
   }
   courseExists.course = req.body.course;
@@ -110,6 +114,6 @@ export const getLoggerSample = (req: Request, res: Response) => {
 
   instance.on('messageLogged', (args) => {
     console.log(args);
-    res.send(JSON.stringify(args));
+    return res.send(JSON.stringify(args));
   });
 };
